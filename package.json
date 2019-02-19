@@ -1,5 +1,5 @@
 {
-  "name": "@appengine/paboat",
+  "name": "@appengine/airship",
   "version": "1.0.0",
   "description": "Lightweight API Framework",
   "main": "dist/index.js",

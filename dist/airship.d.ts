@@ -19,8 +19,8 @@ export declare class Airship extends Paper {
     staticDir: string;
     rootDir: string;
     constructor();
-    init(): void;
-    configureMiddleware(): void;
+    init(): Promise<void>;
+    configureMiddleware(): Promise<void>;
     private initFileUpload;
     private initMongoose;
     configErrorHandling(): void;

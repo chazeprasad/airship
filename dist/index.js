@@ -18,4 +18,6 @@ exports.Del = RouteDecorator_1.Del;
 exports.All = RouteDecorator_1.All;
 var Status_1 = require("./core/Status");
 exports.Status = Status_1.Status;
+var airship_1 = require("./airship");
+exports.Airship = airship_1.Airship;
 //# sourceMappingURL=index.js.map
