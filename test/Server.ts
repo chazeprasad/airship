@@ -22,6 +22,10 @@ server.on('error', onError);
 server.on('listening', onListening);
 server.listen(airship.port);
 
+// airship.app.use((req:Request, res:Response, next:NextFunction) => {
+//     req.context = new Context();
+// })
+
 function onError(error: NodeJS.ErrnoException): void {
     if (error.syscall !== 'listen') throw error;
     let bind = (typeof airship.port === 'string') ? 'Pipe ' + airship.port : 'Port ' + airship.port;

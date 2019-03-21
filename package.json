@@ -1,6 +1,6 @@
 {
   "name": "@appengine/airship",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Lightweight API Framework",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/chazeprasad/airship.git"
   },
-  "author": "",
+  "author": "Prasad Sivanandan<chazeprasad@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/chazeprasad/airship/issues"
