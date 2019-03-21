@@ -57,7 +57,6 @@ var compress = require("compression");
 var cors = require("cors");
 var httpStatus = require("http-status");
 var helmet = require("helmet");
-var multer = require("multer");
 var mongoose = require("mongoose"); //import mongoose
 var expressWinston = require("express-winston");
 var expressValidation = require("express-validation");
@@ -133,44 +132,7 @@ var Airship = /** @class */ (function (_super) {
         });
     };
     Airship.prototype.initFileUpload = function () {
-        var DIR = this.rootDir + '/public/file/';
-        var storage = multer.diskStorage({
-            destination: function (req, file, cb) {
-                cb(null, DIR);
-            },
-            filename: function (req, file, cb) {
-                // cb(null, file.fieldname + '-' + Date.now())
-                var ext = file.originalname.substring(file.originalname.lastIndexOf('.'));
-                cb(null, file.fieldname + '-' + Date.now() + ext);
-            }
-        });
-        var upload = multer({ storage: storage });
-        this.app.post('/api/upload/file', function (req, res, next) {
-            // req.file is the `avatar` file
-            // req.body will hold the text fields, if there were any
-            upload.single('file')(req, res, function (err) {
-                if (err) {
-                    next(err);
-                }
-                res.json({ filename: req.file.filename });
-            });
-        });
-        this.app.post('/api/upload/files', function (req, res, next) {
-            // req.files is array of `photos` files
-            // req.body will contain the text fields, if there were any
-            console.log(req.file);
-            upload.array('file', 100)(req, res, function (err) {
-                if (err) {
-                    next(err);
-                }
-                console.log(req.files);
-                var fileList = req.files;
-                var list = Array.from(fileList, function (x) {
-                    return x.filename;
-                });
-                res.json({ files: list });
-            });
-        });
+        // TODO File Upload with Multer
     };
     Airship.prototype.initMongoose = function () {
         return __awaiter(this, void 0, void 0, function () {

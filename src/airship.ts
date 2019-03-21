@@ -10,7 +10,6 @@ import * as helmet from 'helmet';
 import * as winston from 'winston';
 import * as path from 'path';
 import * as fs from 'fs';
-import * as multer from 'multer';
 import mongoose = require("mongoose"); //import mongoose
 import * as expressWinston from 'express-winston';
 import * as expressValidation from 'express-validation';
@@ -117,48 +116,7 @@ export class Airship extends Paper {
     }
 
     private initFileUpload(): void {
-        var DIR = this.rootDir + '/public/file/';
-
-        var storage = multer.diskStorage({
-            destination: function (req, file, cb) {
-                cb(null, DIR)
-            },
-            filename: function (req, file, cb) {
-                // cb(null, file.fieldname + '-' + Date.now())
-                let ext = file.originalname.substring(file.originalname.lastIndexOf('.'));
-                cb(null, file.fieldname + '-' + Date.now() + ext)
-          }
-        })
-        
-        var upload = multer({ storage: storage })
-
-        this.app.post('/api/upload/file', (req, res, next) => {
-            // req.file is the `avatar` file
-            // req.body will hold the text fields, if there were any
-            upload.single('file')(req, res, (err) => {
-                if(err){ next(err) }
-                res.json({filename: req.file.filename});
-            })
-        })
-
-        this.app.post('/api/upload/files', (req, res, next) => {
-            // req.files is array of `photos` files
-            // req.body will contain the text fields, if there were any
-            console.log(req.file)
-
-            upload.array('file', 100)(req, res, (err) => {
-                if(err){ next(err) }
-                console.log(req.files)
-                let fileList:Array<any> = req.files as Array<any>;
-
-                let list:Array<any> = Array.from( fileList, (x) => {
-                    return x.filename
-                })
-                res.json({ files: list })
-
-            })
-
-        })
+        // TODO File Upload with Multer
     }
 
     private async initMongoose() {
