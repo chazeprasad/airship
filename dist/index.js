@@ -20,7 +20,6 @@ var Status_1 = require("./core/Status");
 exports.Status = Status_1.Status;
 var error_1 = require("./error");
 exports.ApiError = error_1.ApiError;
-exports.ApplicationError = error_1.ApplicationError;
 var airship_1 = require("./airship");
 exports.Airship = airship_1.Airship;
 //# sourceMappingURL=index.js.map

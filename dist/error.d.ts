@@ -1,23 +1,10 @@
 /**
  * @extends Error
  */
-declare class ApplicationError extends Error {
+declare class ApiError extends Error {
     status: string;
-    isPublic: string;
+    isPublic: boolean;
     isOperational: boolean;
-    constructor(message: any, status: any, isPublic: any);
+    constructor(message: any, status: any, isPublic?: boolean);
 }
-/**
- * Class representing an API error.
- * @extends ExtendableError
- */
-declare class ApiError extends ApplicationError {
-    /**
-     * Creates an API error.
-     * @param {string} message - Error message.
-     * @param {number} status - HTTP status code of error.
-     * @param {boolean} isPublic - Whether the message should be visible to user or not.
-     */
-    constructor(message: any, status?: number, isPublic?: boolean);
-}
-export { ApplicationError, ApiError };
+export { ApiError };
